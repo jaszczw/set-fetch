@@ -1,0 +1,29 @@
+{
+  "name": "set-fetch",
+  "version": "0.0.0",
+  "description": "Can be used as an endpoint for getting data for lego set",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klapek/set-fetch.git"
+  },
+  "keywords": [
+    "lego",
+    "rebrickable",
+    "bricklink"
+  ],
+  "author": "Wojciech Jaszczak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/klapek/set-fetch/issues"
+  },
+  "homepage": "https://github.com/klapek/set-fetch#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "request": "^2.74.0",
+    "request-promise": "^4.1.1"
+  }
+}
