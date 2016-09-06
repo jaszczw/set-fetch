@@ -1,6 +1,9 @@
 #README
 
 ##What does it do:
+v 0.0.2
+- Provides links to common aggregates (bricklink, brickset, rebrickable)
+- Fetches data from rebrickable about set passed in GET request
 
 v 0.0.1
 - Fetches data from rebrickable about set passed in GET request
@@ -26,11 +29,20 @@ It provides links to some aggregates like:
 
 #Running project
 
-You will have to create your own config.json file with "apiKey" obtainable on rebrickable page.
+You will have to create your own config.json file with:
+
+ - allegro configuration - webapiKey 
+ - rebrickable configuration - "apiKey" obtainable on rebrickable page.
 
 config.json:
 ```
 {
-  "apiKey": "xxx"
+  "allegro" : {
+    "webapiKey" : "xxx",
+    "country" : 1 /*1 -> Poland*/
+  },
+  "rebrickable" : {
+    "apiKey": "xxx"
+  }
 }
 ```

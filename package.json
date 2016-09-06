@@ -1,6 +1,6 @@
 {
   "name": "set-fetch",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "Can be used as an endpoint for getting data for lego set",
   "main": "index.js",
   "scripts": {
