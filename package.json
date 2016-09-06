@@ -27,5 +27,8 @@
     "request": "^2.74.0",
     "request-promise": "^4.1.1",
     "soap": "^0.16.0"
+  },
+  "devDependencies": {
+    "jscs": "^3.0.7"
   }
 }

@@ -7,7 +7,7 @@ module.exports = function (setId) {
     	uri: 'https://rebrickable.com/api/get_set',
     	qs: {
     		format: 'json',
-    		key : config.apiKey,
+    		key : config.rebrickable.apiKey,
     		set_id: setId
     	},
 	    headers: {

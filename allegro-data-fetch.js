@@ -3,48 +3,47 @@ var config = require('./config.json');
 var allegroWSDL = 'https://webapi.allegro.pl/service.php?wsdl';
 
 module.exports = function(setId) {
-    return new Promise(allegroDataFetcher);
-}
+        return new Promise(allegroDataFetcher.bind(null, setId));
+      };
 
-function allegroDataFetcher(resolve,reject) {
-    try {
-        soap.createClient(allegroWSDL, function (err, client) {
-            client.doGetSellFormAttribs(getFiltersForCat(), function(result) {
-                console.log(result);
-                resolve(result);
-            })
+function allegroDataFetcher(setId, resolve, reject) {
+  try {
+    soap.createClient(allegroWSDL, function(err, client) {
+        var soapGetParams = getItemsOptions(setId);
 
-            //client.doGetItemsList(getItemsOptions(), function (result) {
-            //    if(!result){
-            //        reject(result);
-            //        console.log(err);
-            //    } else {
-            //        console.log(result.response.body);
-            //        resolve(result.response.body);
-            //    }
-            //});
+        client.doGetItemsList(soapGetParams, function(err, result, raw, soapHeader) {
+          if (err) {
+            console.log(err);
+            reject(err);
+          } else {
+            console.log(result);
+            resolve(result);
+          }
         });
-    } catch(error){
-        reject(error);
-    }
+      });
+  } catch (error) {
+    reject(error);
+  }
 }
 
-function getFiltersForCat() {
-    return {
-        'countryId': config.allegro.country,
-        'webapiKey': config.allegro.webapiKey,
-        'catId' : 4
-    }
-}
-
-function getItemsOptions () {
-    return {
-        'webapiKey': config.allegro.webapiKey,
-        'countryId': config.allegro.country,
-        'resultSize' : 1,
-        'filterOptions': [{
-            'filterId': 'category',
-            'filterValueId': '17865',
-        }]
+function getItemsOptions(setId) {
+  return {
+      webapiKey: config.allegro.webapiKey,
+      countryId: config.allegro.country,
+      filterOptions: {
+          item: [
+              getFilterOption('category', '17865'),
+              getFilterOption('search', setId),
+          ]
+      },
+      resultSize: 10,
     };
 };
+
+
+function getFilterOption(name, value) {
+  return {
+      filterId: name,
+      filterValueId: {item: value},
+    };
+}
