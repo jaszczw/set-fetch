@@ -15,17 +15,18 @@ module.exports = function (setId) {
 	    },
     	json: true
 	};
-	console.log(options);
+
 	return rp(options)
 		.then((results) => {
 			var result = results.pop();
+			console.log(results);
 			return {
 				pieces: result.pieces,
 				description: result.descr,
 				theme : result.theme
 			};
 		})
-		.catch(()=>{
-			console.log('Rebrickable requires auth');
+		.catch(()=> {
+			console.log('There was an error fetching set', setId, 'from rebrickable');
 		});
 };
