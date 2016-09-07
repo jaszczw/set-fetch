@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/klapek/set-fetch#readme",
   "dependencies": {
+    "aja": "^0.4.1",
     "express": "^4.14.0",
     "request": "^2.74.0",
     "request-promise": "^4.1.1",

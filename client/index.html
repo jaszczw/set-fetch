@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="libs/aja/aja.min.js" async></script>
+</head>
+<body>
+    <form>
+        <input id="setId" type="text"/>
+        <button onclick="getSetData()" type="button">GetData</button>
+    </form>
+
+    <ul id="links">
+        <li><a>Rebrickable link</a></li>
+        <li><a>Brickset link</a></li>
+        <li><a>BrickLink link</a></li>
+    </ul>
+
+    <div id="bestAllegroPrice">
+
+    </div>
+
+    <div id="result">
+
+    </div>
+<script>
+    var resultEl = document.getElementById('result');
+    var setIdInput = document.getElementById('setId');
+    var priceEl = document.getElementById('bestAllegroPrice');
+
+    function getSetData() {
+        var setId = setIdInput.value;
+
+        aja()
+            .url('/getSet/'+ setId)
+            .on('success', function(data){
+                fillLinks(data.links);
+//                resultEl.innerHTML = JSON.stringify(data);
+                priceEl.textContent = bestAllegroPrice(data.allegro.itemsList);
+            })
+            .go();
+    }
+    
+    function bestAllegroPrice(itemsList) {
+        return itemsList.item[0].priceInfo.item[0].priceValue;
+    }
+
+    function fillLinks(links) {
+        var linksList = document.getElementById('links');
+        var rebrickablePlaceholder = linksList.children[0];
+        var bricksetPlaceholder = linksList.children[1];
+        var brickLinkPlaceholder = linksList.children[2];
+
+        rebrickablePlaceholder.firstChild.href = links.rebrickable;
+        bricksetPlaceholder.firstChild.href = links.brickset;
+        brickLinkPlaceholder.firstChild.href = links.bricklink;
+    }
+</script>
+</body>
+</html>
