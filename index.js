@@ -11,30 +11,36 @@ app.get('/', function(req, res) {
   res.send('/')
 });
 
+app.get('/getset/:setId', function(req, response) {
+	if(!req.params.setId){
+		response.status(400).send('Set id must be passed as argument, @example (/getset/75259)');
+	}
+	var setId = req.params.setId.split('-')[0];
 
-app.get('/getset/:setId', function(req, res) {
-  console.log('/getset');
-  var setId = req.params.setId;
-  var rbFetch = rbDataFetch(setId);
-  var linksFetch = linksGen(setId);
-  var allegroFetch = allegroDataFetch(setId);
-
-  Promise.all([rbFetch,linksFetch, allegroFetch])
-   .then(function(data) {
-    var rbData = data[0];
-    var linksData = data[1];
-    var allegroData = data[2];
-
-    res.send(JSON.stringify({
-      rebrickable: rbData,
-      links: linksData,
-      allegro: allegroData
-    }));
-  }).catch((err) => {
-    res.send(err);
-  });
+	getSetById(setId)
+		.then((result) => response.json(result))
+		.catch((err) => response.status(500).send(err));
 });
 
 app.listen(500,function() {
-  console.log('listening 500');
+	console.log('listening 500');
 });
+
+function getSetById(setId) {
+	var rbFetch = rbDataFetch(setId);
+	var linksFetch = linksGen(setId);
+	var allegroFetch = allegroDataFetch(setId);
+
+	return Promise.all([rbFetch, linksFetch, allegroFetch])
+		.then(function (data) {
+			var rbData = data[0];
+			var linksData = data[1];
+			var allegroData = data[2];
+
+			return {
+				rebrickable: rbData,
+				links: linksData,
+				allegro: allegroData
+			};
+		});
+}
