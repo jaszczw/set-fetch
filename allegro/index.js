@@ -35,11 +35,11 @@ function getItemsListParams(setId) {
           item: [
               getFilterOption('category', '17865'),
               getFilterOption('search', setId),
-              getFilterOption('priceType', 'buyNow')
+              getFilterOption('priceType', 'buyNow'),
           ],
         },
-      sortOptions : {
-        'sortType': 'priceDelivery'
+      sortOptions: {
+        sortType: 'priceDelivery',
       },
       resultSize: 10,
     };
