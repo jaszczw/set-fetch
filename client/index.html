@@ -17,8 +17,9 @@
         <li><a>BrickLink link</a></li>
     </ul>
 
-    <div id="bestAllegroPrice">
-
+    <div>
+        <a href="" id="allegro-name"></a>
+        <div id="allegro-price"></div>
     </div>
 
     <div id="result">
@@ -27,7 +28,6 @@
 <script>
     var resultEl = document.getElementById('result');
     var setIdInput = document.getElementById('setId');
-    var priceEl = document.getElementById('bestAllegroPrice');
 
     function getSetData() {
         var setId = setIdInput.value;
@@ -36,14 +36,28 @@
             .url('/getSet/'+ setId)
             .on('success', function(data){
                 fillLinks(data.links);
-//                resultEl.innerHTML = JSON.stringify(data);
-                priceEl.textContent = bestAllegroPrice(data.allegro.itemsList);
+                fillAllegro(data.allegro.itemsList);
             })
             .go();
     }
+
+    function fillAllegro(itemsList){
+        var priceEl = document.getElementById('allegro-price');
+        var href = document.getElementById('allegro-name');
+        var cheapestData = bestAllegroPricedItem(itemsList);
+
+        href.href = cheapestData.href;
+        href.textContent = cheapestData.name;
+        priceEl.textContent = cheapestData.price;
+    }
     
-    function bestAllegroPrice(itemsList) {
-        return itemsList.item[0].priceInfo.item[0].priceValue;
+    function bestAllegroPricedItem(itemsList) {
+        var cheapest = itemsList.item[0];
+        return {
+            price: cheapest.priceInfo.item[0].priceValue,
+            name: cheapest.itemTitle,
+            href: 'http://allegro.pl/show_item.php?item=' + cheapest.itemId,
+        };
     }
 
     function fillLinks(links) {
