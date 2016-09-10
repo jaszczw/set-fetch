@@ -31,7 +31,8 @@ It provides links to some aggregates like:
 #Running project
 
 1. You will have to create your own configuration .json files with:
-    - allegro configuration - [webapiKey](http://allegro.pl/webapi), country::
+    - allegro configuration - [webapiKey](http://allegro.pl/webapi), country
+    
         ```
         allegro.json
         {
@@ -39,7 +40,8 @@ It provides links to some aggregates like:
             "country" : 1 /*1 -> Poland*/
         }
         ```
-    - rebrickable configuration - "[apiKey](http://rebrickable.com/api/)" .
+    - rebrickable configuration - "[apiKey](http://rebrickable.com/api/)"
+    
         ```
         rebrickable.json
         {
