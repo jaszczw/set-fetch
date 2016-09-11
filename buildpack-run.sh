@@ -13,7 +13,7 @@ fi
 if [ -f lib/brickset/private-config.json ]; then
   echo "Brickset private config exists"
 else
-	echo $BRICKSET_PRIVATE_CONFIG > lib/allegro/private-config.json
+	echo $BRICKSET_PRIVATE_CONFIG > lib/brickset/private-config.json
 
 	if [ -f lib/brickset/private-config.json ]; then
 		echo "Created brickset config"
@@ -24,7 +24,7 @@ fi
 if [ -f lib/rebrickable/private-config.json ]; then
   echo "Rebrickable private config exists"
 else
-	echo $REBRICKABLE_PRIVATE_CONFIG > lib/allegro/private-config.json
+	echo $REBRICKABLE_PRIVATE_CONFIG > lib/rebrickable/private-config.json
 
 	if [ -f lib/rebrickable/private-config.json ]; then
 		echo "Created rebrickable config"
