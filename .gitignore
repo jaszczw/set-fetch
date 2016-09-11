@@ -2,5 +2,4 @@ node_modules
 .idea
 npm-debug.log
 /lib/config/*.json
-*.config.json
-config.json
+private-config.json

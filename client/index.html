@@ -37,6 +37,8 @@
             .on('success', function(data){
                 fillLinks(data.links);
                 fillAllegro(data.allegro.itemsList);
+
+                resultEl.innerHTML = JSON.stringify(data);
             })
             .go();
     }
