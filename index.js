@@ -3,6 +3,7 @@ var express = require('express');
 var fetchSetData = require('./lib/fetchSetData');
 var app = express();
 
+app.set('port', (process.env.PORT || 5000));
 app.use('/libs', express.static('node_modules'));
 
 app.get('/', function (req, res) {
@@ -27,7 +28,6 @@ app.get('/getset/:setId', function (req, response) {
      .catch((err) => response.status(500).send(err));
 });
 
-app.listen(500, function () {
-  console.log('listening 500');
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
-
