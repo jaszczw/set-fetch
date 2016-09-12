@@ -6,10 +6,8 @@
     <script src="libs/aja/aja.min.js" async></script>
 </head>
 <body>
-    <form>
-        <input id="setId" type="text"/>
-        <button onclick="getSetData()" type="button">GetData</button>
-    </form>
+    <input name="setId" title="Set Id" id="setId" type="text"/>
+    <button onclick="getSetData()" type="button">GetData</button>
 
     <ul id="links">
         <li><a>Rebrickable link</a></li>
@@ -54,9 +52,9 @@
     }
     
     function bestAllegroPricedItem(itemsList) {
-        var cheapest = itemsList.item[0];
+        var cheapest = itemsList[0];
         return {
-            price: cheapest.priceInfo.item[0].priceValue,
+            price: cheapest.priceInfo[0].priceValue,
             name: cheapest.itemTitle,
             href: 'http://allegro.pl/show_item.php?item=' + cheapest.itemId,
         };

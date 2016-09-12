@@ -4,12 +4,8 @@ var fetchSetData = require('./lib/fetchSetData');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
+app.use(express.static('client'));
 app.use('/libs', express.static('node_modules'));
-
-app.get('/', function (req, res) {
-  console.log('/');
-  res.sendFile(__dirname + '/client/index.html');
-});
 
 /**
  * @example
@@ -21,13 +17,13 @@ app.get('/getset/:setId', function (req, response) {
     response.status(400).send('Set id must be passed as argument, example (/getset/75259)');
   }
 
-  var setId = req.params.setId;
+  var setId = req.params.setId.trim();
 
   fetchSetData.getBySetId(setId)
      .then((result) => response.json(result))
      .catch((err) => response.status(500).send(err));
 });
 
-app.listen(app.get('port'), function() {
+app.listen(app.get('port'), function () {
   console.log('Node app is running on port', app.get('port'));
 });
