@@ -1,0 +1,12 @@
+<h2>Allegro</h2>
+
+<ul>
+    <% allegro.itemsList.forEach(function(auction) { %>
+        <li>
+            <a href="<%= auction.href%>"><%= auction.itemTitle %></a> -
+            <% auction.priceInfo.forEach(function(priceInfo) { %>
+                <%= priceInfo.priceValue%>(<%= priceInfo.priceType%>)
+            <% }) %>
+        </li>
+    <% }) %>
+</ul>
