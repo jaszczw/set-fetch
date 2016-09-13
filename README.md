@@ -1,6 +1,16 @@
 #README
 
+Project idea is to retrieve and display most basic data about lego sets.
+It should display data like current price on some popular auctions sites, ppb (price per brick), pieces count, rating.
+There will be more info available as more lego services will be integrated into this project.
+
 ##What's new:
+
+v 0.0.4
+- Support for brickset in GET response
+- Deployed onto heroku on [fetch-lego-set](https://fetch-lego-set.herokuapp.com/)
+- Supports basic modularity, in case for example brickset/rebrickable handling were to be extracted it shouldn't be too much of a hassle.
+
 v 0.0.3
 - Fetches data from allegro ordering by price and filtering by category 'Lego'
 - Separated files into smaller modules, configs defined per module.
@@ -30,20 +40,29 @@ It provides links to some aggregates like:
 
 #Running project
 
-1. You will have to create your own configuration .json files with:
+1. You will have to create your own configuration .json files or make enviromental variables that are visible via process.env with data:
     - allegro configuration [webapi](http://allegro.pl/webapi)
     
         ```
-        allegro.json
+        ./lib/allegro/private-config.json || process.env.ALLEGRO_PRIVATE_CONFIG
         {
             "webapiKey" : "xxx",
             "country" : 1 /*1 -> Poland*/
         }
         ```
-    - rebrickable configuration [apiKey](http://rebrickable.com/api/)
+    - rebrickable configuration [api](http://rebrickable.com/api/)
     
         ```
-        rebrickable.json
+        ./lib/rebrickable/private-config.json || process.env.REBRICKABLE_PRIVATE_CONFIG
+        {
+            "apiKey": "xxx"
+        }
+        ```
+        
+    - brickset configuration [webservices](http://brickset.com/tools/webservices/v2)
+    
+        ```
+        ./lib/brickset/private-config.json || process.env.BRICKSET_PRIVATE_CONFIG 
         {
             "apiKey": "xxx"
         }
@@ -52,8 +71,16 @@ It provides links to some aggregates like:
 3. You run the server with `npm start`
 
 ##Server
-Default port is currently set to `500` so endpoint should be available on `localhost:500`
+Default port is currently set to `5000` so endpoint should be available on `localhost:5000`
 
-There is currently one GET endpoint: `/getset/:setId`
+There is currently one GET endpoint: `/getset/:setId` it returns json data with fields like 
+```
+{
+    rebrickable : {},
+    allegro : {},
+    brickset: {},
+    links :{}
+}
+```
+Project is constantly changing so nothing is set in stone yet.
 
-    
