@@ -1,6 +1,6 @@
 'use strict';
 var express = require('express');
-var fetchSetData = require('./lib/fetchSetData');
+var fetchSetData = require('./lib/get-lego-set-data');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));

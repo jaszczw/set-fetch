@@ -41,7 +41,7 @@ It provides links to some aggregates like:
 #Running project
 
 1. You will have to create your own configuration .json files or make enviromental variables that are visible via process.env with data:
-    - allegro configuration [webapi](http://allegro.pl/webapi)
+    - for allegro configuration [webapi](http://allegro.pl/webapi)
     
         ```
         ./lib/allegro/private-config.json || process.env.ALLEGRO_PRIVATE_CONFIG
@@ -50,7 +50,7 @@ It provides links to some aggregates like:
             "country" : 1 /*1 -> Poland*/
         }
         ```
-    - rebrickable configuration [api](http://rebrickable.com/api/)
+    - for rebrickable configuration [api](http://rebrickable.com/api/)
     
         ```
         ./lib/rebrickable/private-config.json || process.env.REBRICKABLE_PRIVATE_CONFIG
@@ -59,7 +59,7 @@ It provides links to some aggregates like:
         }
         ```
         
-    - brickset configuration [webservices](http://brickset.com/tools/webservices/v2)
+    - for brickset configuration [webservices](http://brickset.com/tools/webservices/v2)
     
         ```
         ./lib/brickset/private-config.json || process.env.BRICKSET_PRIVATE_CONFIG 
