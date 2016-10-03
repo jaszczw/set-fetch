@@ -1,6 +1,6 @@
 'use strict';
 var express = require('express');
-var getLegoSetData = require('./get-lego-set-data');
+var getLegoSetData = require('./get-lego-set-data')();
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
@@ -16,7 +16,7 @@ app.get('/set', function (req, res) {
   }
 
   var setId = req.query.setId;
-  getLegoSetData.getBySetId(setId)
+  getLegoSetData(setId)
       .then(function (result) {
         res.render('set-data', result);
       });
@@ -36,7 +36,7 @@ app.get('/getset/:setId', function (req, res) {
 
   var setId = req.params.setId.trim();
 
-  getLegoSetData.getBySetId(setId)
+  getLegoSetData(setId)
      .then((result) =>  res.json(result))
      .catch((err) => res.status(500).send(err));
 });
