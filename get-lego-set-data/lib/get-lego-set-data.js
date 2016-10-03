@@ -2,9 +2,9 @@ var rebrickable = require('../rebrickable');
 var allegro = require('../allegro');
 var brickset = require('../brickset');
 
-module.exports = getSetById;
+module.exports = getLegoSetData;
 
-function getSetById(setId) {
+function getLegoSetData(setId) {
   var rbFetch = rebrickable.getRebrickableSet(setId);
   var links = getLinks(setId);
   var allegroFetch = allegro.getSetAuctions(setId);
