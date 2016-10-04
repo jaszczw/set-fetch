@@ -4,7 +4,39 @@ Project idea is to retrieve and display most basic data about lego sets.
 It should display data like current price on some popular auctions sites, ppb (price per brick), pieces count, rating.
 There will be more info available as more lego services will be integrated into this project.
 
+##What's to be done
+
+- Separate data fetch module with processing and displaying received data
+- [Progressive web app](https://developers.google.com/web/progressive-web-apps/) basing on 
+returned data structure
+    - Material design
+    - Mobile apps support
+    - Thoughtful design
+- Additional data providers
+    - ebay
+    - bricklink
+    - ??
+- (Nice to have)
+    - ability to login to brickset/rebrickable account and see data in context
+    - scan with phone camera for bar
+    - history of viewed data
+    - cache
+
 ##What's new:
+
+v 0.1.0
+- Supports different data providers that can be added either via dependency to external module, 
+or programatically
+    - Brickset data provider
+    - Allegro data provider
+    - Rebrickable data provider
+    - Get links - provides static list of links for passed setId.
+- Deploys to heroku [fetch-lego-set](https://fetch-lego-set.herokuapp.com/) automatically from master.
+- Much more modularized
+- Uses [node-brickset](https://github.com/boneskull/node-brickset) lib instead of naive 
+implementation as brickset data provider.
+- Added [Jest](https://facebook.github.io/jest/) tests with [chai](http://chaijs.com/api/bdd/) 
+assertions.
 
 v 0.0.4
 - Support for brickset in GET response
