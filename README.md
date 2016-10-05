@@ -38,21 +38,6 @@ implementation as brickset data provider.
 - Added [Jest](https://facebook.github.io/jest/) tests with [chai](http://chaijs.com/api/bdd/) 
 assertions.
 
-v 0.0.4
-- Support for brickset in GET response
-- Deployed onto heroku on [fetch-lego-set](https://fetch-lego-set.herokuapp.com/)
-- Supports basic modularity, in case for example brickset/rebrickable handling were to be extracted it shouldn't be too much of a hassle.
-
-v 0.0.3
-- Fetches data from allegro ordering by price and filtering by category 'Lego'
-- Separated files into smaller modules, configs defined per module.
-
-v 0.0.2
-- Provides links to common aggregates (bricklink, brickset, rebrickable)
-
-v 0.0.1
-- Fetches data from rebrickable about set passed in GET request
-
 ## What will it do
 
 v 1.0.0
@@ -78,8 +63,7 @@ It provides links to some aggregates like:
         ```
         ./lib/allegro/private-config.json || process.env.ALLEGRO_PRIVATE_CONFIG
         {
-            "webapiKey" : "xxx",
-            "country" : 1 /*1 -> Poland*/
+            "webapiKey" : "xxx"
         }
         ```
     - for rebrickable configuration [api](http://rebrickable.com/api/)
