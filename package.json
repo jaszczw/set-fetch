@@ -4,7 +4,8 @@
   "description": "Can be used as an endpoint for getting data for lego set",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
+    "devstart": "nodemon index.js",
     "test": "jest --watch"
   },
   "repository": {
