@@ -111,7 +111,6 @@ button.pure-button-primary {
     opacity: 0.8;
 }
 
-
 @keyframes pulse {
     from {
         border-bottom: 1px solid rgba(0, 0, 0, 1);

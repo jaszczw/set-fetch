@@ -1,6 +1,6 @@
 {
   "name": "set-fetch",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Can be used as an endpoint for getting data for lego set",
   "main": "index.js",
   "scripts": {
@@ -33,6 +33,7 @@
     "soap": "^0.16.0"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "jest": "^16.0.0",
     "jscs": "^3.0.7",
     "nodemon": "^1.11.0"
