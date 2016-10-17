@@ -4,7 +4,7 @@ var express = require('express');
 var getLegoSetData = require('get-lego-data')();
 var app = express();
 
-env(__dirname + '/.env');
+env(__dirname + '/.env', { raise: false });
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static('client'));
