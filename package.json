@@ -26,15 +26,12 @@
   "dependencies": {
     "aja": "^0.4.1",
     "express": "^4.14.0",
+    "get-lego-data": "C:\\Projekty\\node-get-lego-data",
     "lodash": "^4.15.0",
-    "request": "^2.74.0",
-    "request-promise-native": "^1.0.3",
-    "brickset": "https://github.com/klapek/node-brickset.git",
-    "soap": "^0.16.0"
+    "node-env-file": "^0.1.8"
+
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "jest": "^16.0.0",
     "jscs": "^3.0.7",
     "nodemon": "^1.11.0"
   }
