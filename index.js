@@ -1,10 +1,13 @@
 'use strict';
-var env = require('node-env-file');
-var express = require('express');
-var getLegoSetData = require('get-lego-data')();
-var app = express();
+require('dotenv').config({ silent: true });
 
-env(__dirname + '/.env', { raise: false });
+var express = require('express');
+var app = express();
+var getLegoSetData;
+
+(function init() {
+  getLegoSetData = require('get-lego-data')();
+})();
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static('client'));

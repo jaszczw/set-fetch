@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "devstart": "nodemon index.js",
-    "test": "jest --watch"
+    "devstart": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -25,11 +24,10 @@
   "homepage": "https://github.com/klapek/set-fetch#readme",
   "dependencies": {
     "aja": "^0.4.1",
+    "dotenv": "^2.0.0",
     "express": "^4.14.0",
-    "get-lego-data": "C:\\Projekty\\node-get-lego-data",
-    "lodash": "^4.15.0",
-    "node-env-file": "^0.1.8"
-
+    "get-lego-data": "https://github.com/klapek/node-get-lego-data.git#master",
+    "lodash": "^4.15.0"
   },
   "devDependencies": {
     "jscs": "^3.0.7",
