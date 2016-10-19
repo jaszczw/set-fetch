@@ -1,12 +1,11 @@
 {
   "name": "set-fetch",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Can be used as an endpoint for getting data for lego set",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "devstart": "nodemon index.js",
-    "test": "jest --watch"
+    "devstart": "nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -25,16 +24,12 @@
   "homepage": "https://github.com/klapek/set-fetch#readme",
   "dependencies": {
     "aja": "^0.4.1",
+    "dotenv": "^2.0.0",
     "express": "^4.14.0",
-    "lodash": "^4.15.0",
-    "request": "^2.74.0",
-    "request-promise-native": "^1.0.3",
-    "brickset": "https://github.com/klapek/node-brickset.git",
-    "soap": "^0.16.0"
+    "get-lego-data": "https://github.com/klapek/node-get-lego-data.git#master",
+    "lodash": "^4.15.0"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
-    "jest": "^16.0.0",
     "jscs": "^3.0.7",
     "nodemon": "^1.11.0"
   }

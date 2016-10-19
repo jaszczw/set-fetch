@@ -12,10 +12,6 @@ returned data structure
     - Material design
     - Mobile apps support
     - Thoughtful design
-- Additional data providers
-    - ebay
-    - bricklink
-    - ??
 - (Nice to have)
     - ability to login to brickset/rebrickable account and see data in context
     - scan with phone camera for bar
@@ -24,19 +20,9 @@ returned data structure
 
 ##What's new:
 
-v 0.1.0
-- Supports different data providers that can be added either via dependency to external module, 
-or programatically
-    - Brickset data provider
-    - Allegro data provider
-    - Rebrickable data provider
-    - Get links - provides static list of links for passed setId.
+v 0.2.0
+- Uses [node-get-lego-data](https://github.com/klapek/node-get-lego-data) module for fetching information about lego set.
 - Deploys to heroku [fetch-lego-set](https://fetch-lego-set.herokuapp.com/) automatically from master.
-- Much more modularized
-- Uses [node-brickset](https://github.com/boneskull/node-brickset) lib instead of naive 
-implementation as brickset data provider.
-- Added [Jest](https://facebook.github.io/jest/) tests with [chai](http://chaijs.com/api/bdd/) 
-assertions.
 
 ## What will it do
 
@@ -57,37 +43,26 @@ It provides links to some aggregates like:
 
 #Running project
 
-1. You will have to create your own configuration .json files or make enviromental variables that are visible via process.env with data:
-    - for allegro configuration [webapi](http://allegro.pl/webapi)
+1. You will have to make enviromental variables that are visible via process.env you can 
+store them in an .env file that will be loaded on startup, more info in [node-get-lego-data](https://github.com/klapek/node-get-lego-data) module:
+     
+    ```
+    ALLEGRO_APIKEY=qwert
+    BRICKSET_APIKEY=qazxsw
+    REBRICKABLE_APIKEY=123ewqdsa
+    ```
     
-        ```
-        ./lib/allegro/private-config.json || process.env.ALLEGRO_PRIVATE_CONFIG
-        {
-            "webapiKey" : "xxx"
-        }
-        ```
-    - for rebrickable configuration [api](http://rebrickable.com/api/)
+    Api keys are obtained from sites as follows
+    - [allegro webapiKey](http://allegro.pl/webapi)
+    - [rebrickable apiKey](http://rebrickable.com/api/)       
+    - [brickset apikey](http://brickset.com/tools/webservices/v2)
     
-        ```
-        ./lib/rebrickable/private-config.json || process.env.REBRICKABLE_PRIVATE_CONFIG
-        {
-            "apiKey": "xxx"
-        }
-        ```
-        
-    - for brickset configuration [webservices](http://brickset.com/tools/webservices/v2)
-    
-        ```
-        ./lib/brickset/private-config.json || process.env.BRICKSET_PRIVATE_CONFIG 
-        {
-            "apiKey": "xxx"
-        }
-        ```
 2. You have to install node modules with `npm install`
 3. You run the server with `npm start`
 
 ##Server
-Default port is currently set to `5000` so endpoint should be available on `localhost:5000`
+Default port is currently set to `5000` so endpoint should be available on `localhost:5000`,
+but `process.env.port` is taking precedense so most hosting providers should work fine.
 
 There is currently one GET endpoint: `/getset/:setId` it returns json data with fields like 
 ```
