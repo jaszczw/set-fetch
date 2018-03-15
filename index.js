@@ -1,13 +1,9 @@
 'use strict';
-require('dotenv').config({ silent: true });
+require('dotenv').config({silent: true});
 
-var express = require('express');
-var app = express();
-var getLegoSetData;
-
-(function init() {
-  getLegoSetData = require('get-lego-data')();
-})();
+const express = require('express');
+const app = express();
+const getLegoSetData = require('get-lego-data')();
 
 app.set('port', (process.env.PORT || 5000));
 app.use(express.static('client'));
@@ -21,11 +17,12 @@ app.get('/set', function (req, res) {
     return;
   }
 
-  var setId = req.query.setId;
+  const setId = req.query.setId;
   getLegoSetData(setId)
-      .then(function (result) {
-        res.render('set-data', result);
-      });
+    .then(function (result) {
+      result = {rebrickable: {}, brickset: {}, allegro: {}, ...result};
+      res.render('set-data', result);
+    });
 
 });
 
@@ -40,11 +37,11 @@ app.get('/getset/:setId', function (req, res) {
     return;
   }
 
-  var setId = req.params.setId.trim();
+  const setId = req.params.setId.trim();
 
   getLegoSetData(setId)
-     .then((result) =>  res.json(result))
-     .catch((err) => res.status(500).send(err));
+    .then((result) => res.json(result))
+    .catch((err) => res.status(500).send(err));
 });
 
 app.listen(app.get('port'), function () {
